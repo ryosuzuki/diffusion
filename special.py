@@ -4,19 +4,19 @@ import numpy as np
 import matplotlib.mlab as mlab
 
 m = 0
-q = 0.1
+q = 3
 
-c = 1
+c = 1.0
 beta = 0.1
 lammda = 0.4
 
-n = 300
+n = 30
 t = 0
 
 def f(m, q):
-	n = 20
-	if - n / q < m and m < n / q:
-		return q / (2.0 * n)
+	upper = 1 / (0.3 * q)
+ 	if upper - 1 < m and m < upper:
+		return 1
 	else:
 		return 0
 	
@@ -25,7 +25,7 @@ def F(m, q):
 		return 0
 	else:
 		f_prime = lambda x: f(x, q)
-		y, error = quad(f_prime, -100, m)
+		y, error = quad(f_prime, -10, m)
 		print "F ( ) = " + str(y)
 		return y
 
@@ -52,7 +52,7 @@ subplot(1,2,1)
 lines = plot(time, mass, 'k')
 setp(lines, color='r', linewidth=2.0)
 xlabel("Time", fontname='serif')
-ylabel("Mass", fontname='serif') 
+ylabel("Mass", fontname='serif')
 
 subplot(1,2,2)
 lines = plot(time, quality, 'k')

@@ -4,18 +4,18 @@ import numpy as np
 import matplotlib.mlab as mlab
 
 m = 0
-q = 0.12
+q = 0.4
 
-c = 1
+c = 0.1
 beta = 0.1
 lammda = 0.4
 
-n = 10
+n = 30
 t = 0
 
 def f(m, q):
 	mean = 0.1 / q
-	variance = 0.2
+	variance = 0.1
 	sigma = sqrt(variance)
 	return mlab.normpdf(m, mean, sigma)
 	
@@ -50,8 +50,12 @@ print quality
 subplot(1,2,1)
 lines = plot(time, mass, 'k')
 setp(lines, color='r', linewidth=2.0)
+xlabel("Time", fontname='serif')
+ylabel("Mass", fontname='serif')
 
 subplot(1,2,2)
 lines = plot(time, quality, 'k')
 setp(lines, color='r', linewidth=2.0)
+xlabel("Time", fontname='serif')
+ylabel("Quality", fontname='serif')
 show()
